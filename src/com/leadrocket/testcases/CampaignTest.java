@@ -14,23 +14,24 @@ import com.leadrocket.pages.LogoutPage;
 
 import Utility.BrowserFactory;
 
-public class CampaignTest{
-	
-@BeforeClass()
-	public void configBeforecls(){
-		
-		WebDriver driver=BrowserFactory.startBrowser("firebox", "https://www.sgqaqa.com/account/login.php");
+public class CampaignTest {
+
+	@BeforeClass()
+	public void configBeforecls() {
+
+		WebDriver driver = BrowserFactory.startBrowser("firebox", "https://www.sgqaqa.com/account/login.php");
 	}
-@BeforeMethod
-	public void configBeforeMtd( WebDriver driver){
-		//step 1 : login to APP
-				LoginPage login_page =PageFactory.initElements(driver, LoginPage.class);
-				login_page.login_leadrocket("qa.qa2@sgqastg.com", "genius123");
-		//step 2: Navigate to Marketing and goto Campaign link
-				CampaignPage campgn_page =PageFactory.initElements(driver, CampaignPage.class);
-				campgn_page.navigateTocampaignPage();
+
+	@BeforeMethod
+	public void configBeforeMtd(WebDriver driver) {
+		// step 1 : login to APP
+		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
+		login_page.login_leadrocket("qa.qa2@sgqastg.com", "genius123");
+		// step 2: Navigate to Marketing and goto Campaign link
+		CampaignPage campgn_page = PageFactory.initElements(driver, CampaignPage.class);
+		campgn_page.navigateTocampaignPage();
 	}
-	
+
 @Test
 	public void verifyCampaign(WebDriver driver)
 	{
@@ -39,13 +40,14 @@ public class CampaignTest{
 		//step 3: Create new campaign
 		campgn_page.createNewCampaign("Campaign1");
 		//step 4: logout from app
-		
-@AfterMethod
-		public void configAfterMtd(WebDriver driver){
+
+	@AfterMethod
+	public void configAfterMtd(WebDriver driver) {
 		LogoutPage logout_page = PageFactory.initElements(driver, LogoutPage.class);
 		logout_page.logout();
 
-}
+	}
+
 @AfterClass()
 		public void configAftercls(WebDriver driver){
 		{
