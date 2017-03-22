@@ -7,7 +7,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.leadrocket.pages.CampaignPage;
 import com.leadrocket.pages.LoginPage;
 import com.leadrocket.pages.LogoutPage;
@@ -18,7 +17,7 @@ public class CampaignTest {
 
 	@BeforeClass()
 	public void configBeforecls() {
-
+		@SuppressWarnings("unused")
 		WebDriver driver = BrowserFactory.startBrowser("firebox", "https://www.sgqaqa.com/account/login.php");
 	}
 
@@ -32,26 +31,24 @@ public class CampaignTest {
 		campgn_page.navigateTocampaignPage();
 	}
 
-@Test
-	public void verifyCampaign(WebDriver driver)
-	{
-		CampaignPage campgn_page =PageFactory.initElements(driver, CampaignPage.class);
-		//campgn_page.navigateTocampaignPage();
-		//step 3: Create new campaign
+	@Test
+	public void verifyCampaign(WebDriver driver) {
+		CampaignPage campgn_page = PageFactory.initElements(driver, CampaignPage.class);
+		// campgn_page.navigateTocampaignPage();
+		// step 3: Create new campaign
 		campgn_page.createNewCampaign("Campaign1");
-		//step 4: logout from app
+	}
 
+	// step 4: logout from app
 	@AfterMethod
 	public void configAfterMtd(WebDriver driver) {
 		LogoutPage logout_page = PageFactory.initElements(driver, LogoutPage.class);
 		logout_page.logout();
-
 	}
 
-@AfterClass()
-		public void configAftercls(WebDriver driver){
-		{
-			driver.quit();
-		}
-		
+	@AfterClass()
+	public void configAftercls(WebDriver driver) {
+		driver.quit();
 	}
+
+}
